@@ -1,7 +1,9 @@
 import React from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, View, StyleSheet, Text, Button } from "react-native";
 
-function ViewImage() {
+function ViewImage({ route, navigation }) {
+  const { name } = route.params;
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -17,11 +19,15 @@ function ViewImage() {
           }}
         />
       </View>
+      <Text>{name}</Text>
       <Image
         source={require("../assets/chair.jpg")}
         style={styles.image}
         resizeMode={"contain"}
       />
+      <Button title="back to welcome" onPress={() => {
+        navigation.goBack();
+      }} />
     </View>
   );
 }
@@ -36,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    top: 20
+    top: 20,
   },
   image: {
     width: "100%",

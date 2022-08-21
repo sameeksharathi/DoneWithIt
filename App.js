@@ -7,14 +7,15 @@ import {
 } from "react-native";
 import Welcome from "./src/welcome";
 import ViewImage from "./src/viewImage";
+import AppNavigator from "./routes/routes";
 
 export default function App() {
   console.log("App Executed");
 
   return (
     <View style={styles.container}>
-      {/* <Welcome /> */}
-      <ViewImage />
+      <AppNavigator />
+      {/* <ViewImage /> */}
       <StatusBar style="auto" />
     </View>
   );

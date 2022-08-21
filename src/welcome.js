@@ -1,6 +1,13 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  Button,
+} from "react-native";
 
-export default function Welcome() {
+export default function Welcome({ navigation }) {
   console.log("Welcome Executed");
 
   return (
@@ -16,7 +23,12 @@ export default function Welcome() {
         />
         <Text style={{ color: "black" }}>Sell what you don't need!</Text>
       </View>
-      <View style={{ backgroundColor: "tomato", width: "100%", height: 70 }} />
+      <View style={{ backgroundColor: "tomato", width: "100%", height: 70 }}>
+        <Button
+          title="View Image"
+          onPress={() => navigation.push("View Image", {name: 'chair'})}
+        />
+      </View>
       <View
         style={{ backgroundColor: "dodgerblue", width: "100%", height: 70 }}
       />
