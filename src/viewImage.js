@@ -1,8 +1,13 @@
 import React from "react";
 import { Image, View, StyleSheet, Text, Button } from "react-native";
+import { useRoute, Link } from "@react-navigation/native";
 
-function ViewImage({ route, navigation }) {
-  const { name } = route.params;
+function ViewImage({
+  navigation,
+  // route
+}) {
+  // const { name } = route.params;
+  const route = useRoute();
 
   return (
     <View style={styles.container}>
@@ -18,16 +23,23 @@ function ViewImage({ route, navigation }) {
             right: 20,
           }}
         />
+
       </View>
-      <Text>{name}</Text>
+      {/* <Button
+          title="back to welcome"
+          onPress={() => {
+            navigation.goBack();
+          }}
+        /> */}
+      <Link to={{ screen: 'Welcome', params: { id: 'jane' } }} style={{ backgroundColor: 'gold', width: "100%", textAlign: 'center', paddingVertical: 10 }}>
+        Go to Welcome Page
+      </Link>
+      <Text>{route.params?.name}</Text>
       <Image
         source={require("../assets/chair.jpg")}
         style={styles.image}
         resizeMode={"contain"}
       />
-      <Button title="back to welcome" onPress={() => {
-        navigation.goBack();
-      }} />
     </View>
   );
 }

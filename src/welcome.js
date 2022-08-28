@@ -6,9 +6,25 @@ import {
   ImageBackground,
   Button,
 } from "react-native";
+import { useFocusEffect } from '@react-navigation/native';
+import React from 'react';
+
 
 export default function Welcome({ navigation }) {
   console.log("Welcome Executed");
+
+  const title = () => {
+    useFocusEffect(
+      React.useCallback(() => {
+        alert('Screen was focused');
+        return () => {
+          alert('Screen was unfocused');
+        };
+      }, [])
+    );
+  
+    return <View />;
+  }
 
   return (
     <ImageBackground
@@ -23,10 +39,11 @@ export default function Welcome({ navigation }) {
         />
         <Text style={{ color: "black" }}>Sell what you don't need!</Text>
       </View>
+      {title()}
       <View style={{ backgroundColor: "tomato", width: "100%", height: 70 }}>
         <Button
           title="View Image"
-          onPress={() => navigation.push("View Image", {name: 'chair'})}
+          onPress={() => navigation.navigate("View Image", { name: "chair" })}
         />
       </View>
       <View
